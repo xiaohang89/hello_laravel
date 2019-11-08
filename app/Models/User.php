@@ -11,6 +11,13 @@ use Illuminate\Contracts\Auth\MustVerifyEmail as MustVerifyEmailContract;
 
 class User extends Authenticatable implements MustVerifyEmailContract
 {
+
+    // 权限调用此函数
+    public function isAuthorOf($model)
+    {
+        return $this->id == $model->user_id;
+    }
+
     use Notifiable, MustVerifyEmailTrait;
 
     /**
