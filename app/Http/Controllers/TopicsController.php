@@ -9,6 +9,7 @@ use App\Http\Requests\TopicRequest;
 
 class TopicsController extends Controller
 {
+	// 执行此文件之前先之前这个函数里的内容
     public function __construct()
     {
         $this->middleware('auth', ['except' => ['index', 'show']]);
@@ -16,7 +17,10 @@ class TopicsController extends Controller
 
 	public function index()
 	{
-		$topics = Topic::paginate();
+		// N+1问题，拖垮整个网站速度
+		//$topics = Topic::paginate();
+		// 利用预加载方法解决n+1问题 
+		$topics = Topic::with('user', 'category')->paginate(30);
 		return view('topics.index', compact('topics'));
 	}
 
