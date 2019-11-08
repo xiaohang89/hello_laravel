@@ -43,6 +43,7 @@
               </div>
 
               <div class="form-group">
+                <!-- 如果用xss需要注册这个类 （指普通的表单域里面，在APP/providers注册才能使用）利用第三方编辑器 需要配置过滤项  -->
                 <textarea name="body" class="form-control" id="editor" rows="6" placeholder="请填入至少三个字符的内容。" required>{{ old('body', $topic->body ) }}</textarea>
               </div>
 
