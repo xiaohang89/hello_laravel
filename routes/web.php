@@ -44,11 +44,12 @@ Route::resource('users', 'UsersController', ['only' => ['show', 'update', 'edit'
 // Route::patch('/users/{user}', 'UsersController@update')->name('users.update');
 Route::resource('topics', 'TopicsController', ['only' => ['index', 'create', 'store', 'update', 'edit', 'destroy']]);
 Route::get('topics/{topic}/{slug?}', 'TopicsController@show')->name('topics.show');
-// 分类话题
+
+// 顶部分类话题
 Route::resource('categories', 'CategoriesController', ['only' => ['show']]);
 
 // 图片上传
 Route::post('upload_image', 'TopicsController@uploadImage')->name('topics.upload_image');
 
 // 回复话题页面
-Route::resource('replies', 'RepliesController', ['only' => ['index', 'show', 'create', 'store', 'update', 'edit', 'destroy']]);
+Route::resource('replies', 'RepliesController', ['only' => ['store', 'destroy']]);

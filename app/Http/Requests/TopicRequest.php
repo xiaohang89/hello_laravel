@@ -10,14 +10,19 @@ class TopicRequest extends Request
         {
             // CREATE
             case 'POST':
-            // UPDATE
-            case 'PUT':
-            case 'PATCH':
             {
                 return [
                     'title'       => 'required|min:2',
                     'body'        => 'required|min:3',
                     'category_id' => 'required|numeric',
+                ];
+            }
+            // UPDATE
+            case 'PUT':
+            case 'PATCH':
+            {
+                return [
+                   
                 ];
             }
             case 'GET':

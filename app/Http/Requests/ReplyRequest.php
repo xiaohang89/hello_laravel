@@ -6,13 +6,20 @@ class ReplyRequest extends Request
 {
     public function rules()
     {
+        // 两种写法
+            //   public function rules()
+            //  {
+            //      return [
+            //          'content' => 'required|min:2',
+            //      ];
+            //  }       //    
         switch($this->method())
         {
             // CREATE
             case 'POST':
             {
                 return [
-                    // CREATE ROLES
+                     'content' => 'required|min:2',
                 ];
             }
             // UPDATE
