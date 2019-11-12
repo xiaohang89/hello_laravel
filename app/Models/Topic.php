@@ -56,4 +56,11 @@ class Topic extends Model
     {
         return $this->hasMany(Reply::class);
     }
+
+    // 删除/增加 reply_count的值
+    public function updateReplyCount()
+    {
+        $this->reply_count = $this->replies->count();
+        $this->save();
+    }
 }
