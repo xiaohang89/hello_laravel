@@ -53,3 +53,6 @@ Route::post('upload_image', 'TopicsController@uploadImage')->name('topics.upload
 
 // 回复话题页面
 Route::resource('replies', 'RepliesController', ['only' => ['store', 'destroy']]);
+
+// 邮箱通知类
+Route::resource('notifications', 'NotificationsController', ['only' => ['index']]);
