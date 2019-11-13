@@ -9,10 +9,14 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Contracts\Auth\MustVerifyEmail as MustVerifyEmailContract;
 // auth
 use Auth;
-
+// 权限和角色方法
+use Spatie\Permission\Traits\HasRoles;
 class User extends Authenticatable implements MustVerifyEmailContract
 {
 
+    // 权限和角色方法
+    use HasRoles;
+    
     // 权限调用此函数
     public function isAuthorOf($model)
     {
