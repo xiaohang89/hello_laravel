@@ -56,3 +56,6 @@ Route::resource('replies', 'RepliesController', ['only' => ['store', 'destroy']]
 
 // 邮箱通知类
 Route::resource('notifications', 'NotificationsController', ['only' => ['index']]);
+
+// 当普通用户访问后台 提示无权访问页面给出提示
+Route::get('permission-denied', 'PagesController@permissionDenied')->name('permission-denied');
