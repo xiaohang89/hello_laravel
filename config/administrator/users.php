@@ -16,7 +16,7 @@ return [
     // 返回 True 即通过权限验证，False 则无权访问并从 Menu 中隐藏
     'permission'=> function()
     {
-        return Auth::user()->can('manage_users');
+        return Auth::user()->can('manage_contents');
     },
 
     // 字段负责渲染『数据表格』，由无数的『列』组成，
