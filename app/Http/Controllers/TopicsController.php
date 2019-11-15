@@ -9,6 +9,11 @@ use App\Http\Requests\TopicRequest;
 use App\Models\Category;
 use Auth;
 use App\Handlers\ImageUploadHandler;
+// 调用活跃度用户
+use App\Models\User;
+// 调用推荐文章
+use App\Models\Link;
+
 class TopicsController extends Controller
 {
 	// 执行此文件之前先之前这个函数里的内容
@@ -17,13 +22,23 @@ class TopicsController extends Controller
         $this->middleware('auth', ['except' => ['index', 'show']]);
     }
 
-	public function index(Request $request, Topic $topic)
+
+	public function index(Request $request, Topic $topic, User $user, Link $link)
 	{
 		// N+1问题，拖垮整个网站速度
-		//$topics = Topic::paginate();
+		// $topics = Topic::paginate();
 		// 利用预加载方法解决n+1问题 
-		$topics = $topic->withOrder($request->order)->paginate(20);
-		return view('topics.index', compact('topics'));
+		// $topics = $topic->withOrder($request->order)->paginate(20);
+		// return view('topics.index', compact('topics'));
+
+		$topics = $topic->withOrder($request->order)
+                        ->with('user', 'category')  // 预加载防止 N+1 问题
+                        ->paginate(20);
+        $active_users = $user->getActiveUsers();
+        //dd($active_users);
+        // 调用推荐文章
+        $links = $link->getAllCached();
+        return view('topics.index', compact('topics', 'active_users', 'links'));
 	}
 
     public function show(Request $request, Topic $topic)

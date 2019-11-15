@@ -34,5 +34,6 @@ class AppServiceProvider extends ServiceProvider
         Topic::observe(TopicObserver::class);
         User::observe(UserObserver::class);
         Reply::observe(ReplyObserver::class);
+        \App\Models\Link::observe(\App\Observers\LinkObserver::class);
     }
 }

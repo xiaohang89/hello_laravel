@@ -16,6 +16,10 @@ class User extends Authenticatable implements MustVerifyEmailContract
 
     // 权限和角色方法
     use HasRoles;
+    //计算活跃用户
+    use Traits\ActiveUserHelper;
+    // 记录最后用户登录时间
+    use Traits\LastActivedAtHelper;
     
     // 权限调用此函数
     public function isAuthorOf($model)

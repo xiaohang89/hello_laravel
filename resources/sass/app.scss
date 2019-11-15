@@ -38,7 +38,11 @@ body {
   margin-top: 0px;
 }
 
-
+.media-heading {
+  a {
+      color:#000;
+    }
+}
 .footer {
   position: absolute;
   bottom: 0;
@@ -73,7 +77,7 @@ body {
 }
 
 /* Topic Index Page 话题页面 */
-.topics-index-page, .categories-show-page {
+.topics-index-page, .categories-show-page, .root-page {
   .topic-list {
     .nav>li>a {
       position: relative;

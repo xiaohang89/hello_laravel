@@ -11,12 +11,14 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {   
-        // 按顺序执行 
+        // 注意：按顺序执行 
         // 先生成用户
         $this->call(UsersTableSeeder::class);
 		// 接着生成话题
 		$this->call(TopicsTableSeeder::class);
         // 最后生成回复
         $this->call(RepliesTableSeeder::class);
+        // 生成推荐文章
+        $this->call(LinksTableSeeder::class);
     }
 }
