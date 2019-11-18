@@ -178,6 +178,8 @@ return [
         App\Providers\RouteServiceProvider::class,
         // 后台
         Frozennode\Administrator\AdministratorServiceProvider::class,
+        // 短信发送
+        App\Providers\EasySmsServiceProvider::class,
 
     ],
 
