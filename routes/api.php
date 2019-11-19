@@ -32,6 +32,11 @@ $api->version('v1', [
         // 图片验证码
         $api->post('captchas', 'CaptchasController@store')
             ->name('api.captchas.store');
+
+       // 第三方登录
+       $api->post('socials/{social_type}/authorizations', 'AuthorizationsController@socialStore')
+           ->where('social_type', 'weixin')
+           ->name('socials.authorizations.store');
     });
 });
 //	Route::middleware('auth:api')->get('/user', function (Request $request) {
