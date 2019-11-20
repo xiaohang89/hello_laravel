@@ -11,7 +11,10 @@ use Illuminate\Contracts\Auth\MustVerifyEmail as MustVerifyEmailContract;
 use Auth;
 // 权限和角色方法
 use Spatie\Permission\Traits\HasRoles;
-class User extends Authenticatable implements MustVerifyEmailContract
+// 引用jwt
+use Tymon\JWTAuth\Contracts\JWTSubject;
+
+class User extends Authenticatable implements MustVerifyEmailContract, JWTSubject
 {
 
     // 权限和角色方法
@@ -120,5 +123,16 @@ class User extends Authenticatable implements MustVerifyEmailContract
         }
 
         $this->attributes['avatar'] = $path;
+    }
+
+    // jwt 两个接口
+    public function getJWTIdentifier()
+    {
+        return $this->getKey();
+    }
+
+    public function getJWTCustomClaims()
+    {
+        return [];
     }
 }
